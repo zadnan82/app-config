@@ -1,14 +1,15 @@
 {
+  "_readme": "Controls update prompts for Giggli Cosmetics Scanner. minBuild = blocking (anything below is locked out). latestBuild = dismissible prompt. Both compare against the BUILD number (the +N in pubspec.yaml), NOT the version name. Set these from the real build numbers in App Store Connect / Play Console. Leaving both at 1 keeps the feature dormant.",
   "android": {
-    "latestBuild": 14,
+    "latestBuild": 1,
     "minBuild": 1,
     "latestVersion": "1.1.0",
     "storeUrl": "https://play.google.com/store/apps/details?id=com.zainabadnan.scanmylotions"
   },
   "ios": {
-    "latestBuild": 14,
+    "latestBuild": 1,
     "minBuild": 1,
-    "latestVersion": "1.1.0",
-    "storeUrl": "https://apps.apple.com/app/idPUT_YOUR_APPLE_APP_ID_HERE"
+    "latestVersion": "1.3",
+    "storeUrl": "https://apps.apple.com/app/id6447474601"
   }
 }
