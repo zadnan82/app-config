@@ -1,0 +1,14 @@
+{
+  "android": {
+    "latestBuild": 14,
+    "minBuild": 1,
+    "latestVersion": "1.1.0",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.zainabadnan.scanmylotions"
+  },
+  "ios": {
+    "latestBuild": 14,
+    "minBuild": 1,
+    "latestVersion": "1.1.0",
+    "storeUrl": "https://apps.apple.com/app/idPUT_YOUR_APPLE_APP_ID_HERE"
+  }
+}
