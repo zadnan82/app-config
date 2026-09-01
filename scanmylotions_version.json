@@ -1,5 +1,5 @@
 {
-  "_readme": "Update policy. minBuild = BLOCKING (anything below is locked out). latestBuild = dismissible prompt. Both compare against the BUILD number (the +N in pubspec.yaml), not the version name. Next release is build 100. AFTER that release is live and approved in the store, set latestBuild to 100 to prompt, and minBuild to 100 to force. Leaving both at 1 keeps this dormant.",
+  "_readme": "Update policy, compared against the BUILD number (the +N in pubspec.yaml). latestBuild = dismissible prompt. minBuild = BLOCKING. FORCING NOW REQUIRES BOTH: as of app build 103 the client ignores a minBuild that runs ahead of latestBuild and downgrades it to a prompt, because 'minBuild raised before the build is published' is exactly how you lock every user out of a working app. On iOS the client additionally asks Apple whether the version is really on the App Store before it will block, and never blocks if that check fails. SHIPPING NEXT: 1.7.0 build 103. Leave both at 1 until it is live and approved. ONCE LIVE: set latestVersion to \"1.7.0\" and latestBuild to 103 to prompt; add minBuild 103 only if you truly need a hard lockout. latestVersion below reflects what is currently live, not what is queued.",
   "android": {
     "latestBuild": 1,
     "minBuild": 1,
