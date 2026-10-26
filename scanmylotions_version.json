@@ -1,5 +1,5 @@
 {
-  "_readme": "Update policy, compared against the BUILD number (the +N in pubspec.yaml). latestBuild = dismissible prompt. minBuild = BLOCKING. FORCING NEEDS BOTH, and needs the build to be LIVE first: raising minBuild against a store still serving an older build blocks a user, sends them to update, and blocks them again. The client guard that downgrades that mistake to a prompt only exists in app build 103+, so the users it would strand are exactly the ones without it. latestVersion MUST match the version string the store actually reports, not the one in pubspec.yaml: iOS blocks only when latestVersion <= the live App Store version, so claiming a version the store does not serve silently disables enforcement. Build 108 shipped on iOS under an App Store version entry labelled '1.6' (the build's own CFBundleShortVersionString is 1.7.1), which is why ios.latestVersion reads 1.6. ANDROID IS STILL IN REVIEW as of this change - leave it at 1 until Play has approved AND rolled out to 100%, then set both to 108 with latestVersion matching the Play listing.",
+  "_readme": "Update policy, compared against the BUILD number (the +N in pubspec.yaml). latestBuild = dismissible prompt. minBuild = BLOCKING, and needs latestBuild set too or the client downgrades it to a prompt. READ THIS BEFORE SETTING latestVersion: it is not a label, it is the version the iOS client demands the App Store already be serving before it will block (return !_isNewer(wanted, live) in update_service.dart). Builds 108 and older query itunes.apple.com/lookup WITHOUT a country parameter, which once answered a stale version for weeks; builds after that cache-bust the lookup. Check that every spelling (no country, &country=se, &country=us) reports the version before setting it here - on 2026-10-26 all three answered 1.7.4. Set it to a version the store actually reports, not the one in pubspec.yaml. minBuild is what does the real gating. ALSO: the update dialog could not appear at all in builds 100-108 - UpdateGate showed it on a context above the Navigator and showDialog threw every time. Fixed in build 109. Nothing set here reaches a user on 108 or below; they arrive on a working build through ordinary store updates. ANDROID is still in review and stays at 1 until Play has rolled out to 100%.",
   "android": {
     "latestBuild": 1,
     "minBuild": 1,
@@ -7,9 +7,9 @@
     "storeUrl": "https://play.google.com/store/apps/details?id=com.zainabadnan.scanmylotions"
   },
   "ios": {
-    "latestBuild": 108,
+    "latestBuild": 113,
     "minBuild": 108,
-    "latestVersion": "1.6",
+    "latestVersion": "1.7.4",
     "storeUrl": "https://apps.apple.com/app/id6447474601"
   }
 }
